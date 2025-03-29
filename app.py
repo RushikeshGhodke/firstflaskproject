@@ -1,11 +1,11 @@
 from flask import Flask, jsonify, request, render_template
 import requests
 
-app = Flask("My First Application")
+app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return "<b>Hello Ji!</b>"
+    return render_template('index.html')
 
 @app.route('/sample')
 def getSampleHtml():
@@ -15,5 +15,6 @@ def getSampleHtml():
 def greetUser(username):
     return render_template('greet.html', username=username)
 
+# This is only needed for local development
 if __name__ == "__main__":
     app.run(debug=True)
